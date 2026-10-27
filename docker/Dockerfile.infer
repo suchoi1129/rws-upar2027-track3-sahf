@@ -1,0 +1,10 @@
+# Conversion, packaging and inference: the challenge container (PyTorch 2.4.1, CUDA 12.1, Python 3.11) plus the tools
+# of requirements/package.txt. torch / torchvision of the base image are kept.
+#   docker build -f docker/Dockerfile.infer -t upar-sahf-infer .
+FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime
+WORKDIR /workspace/upar2027-track3-sahf
+COPY requirements/package.txt requirements/package.txt
+RUN grep -v -E '^(torch|torchvision)==' requirements/package.txt > /tmp/package.txt \
+    && pip install --no-cache-dir -r /tmp/package.txt
+COPY . .
+RUN chmod -R a+rwX /workspace                       # also runs with docker run --user

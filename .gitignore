@@ -1,0 +1,13 @@
+/data/
+/weights/
+/work/
+/submissions/
+*.pth
+*.pt
+*.zip
+*.torchscript
+__pycache__/
+*.pyc
+.omc/
+.venv*/
+*.egg-info/

@@ -1,0 +1,8 @@
+.git
+data/
+weights/
+work/
+submissions/
+.venv*/
+**/__pycache__
+*.egg-info
